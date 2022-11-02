@@ -1,13 +1,22 @@
 <script setup>
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted, onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '../stores/userStore.js'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore();
 
 const { email, password } = storeToRefs(userStore);
 
-onMounted(() => {})
+const router = useRouter();
+
+onMounted(() => {
+    console.log("Login mounted.");
+})
+
+onUnmounted(() => {
+    console.log("Login unmounted.");
+})
 
 defineProps({})
 
@@ -19,6 +28,7 @@ const state = reactive({
 function login() {
     email.value = state.email;
     password.value = state.password;
+    router.push("/tasks")
 }
 
 </script>

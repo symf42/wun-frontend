@@ -1,18 +1,23 @@
 <script setup>
-import Tasks from './components/Tasks.vue'
-import Login from './components/Login.vue'
+import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useUserStore } from './stores/userStore.js'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore();
 
 const { email, password } = storeToRefs(userStore);
 
+const router = useRouter();
+
+onMounted(() => {
+  router.push("/");
+})
+
 </script>
 
 <template>
-  <Login v-if="email === null && password === null" />
-  <Tasks v-if="email !== null && password !== null" />
+  <router-view></router-view>
 </template>
 
 <style scoped></style>

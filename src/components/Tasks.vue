@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted, onUnmounted } from 'vue'
 import axios from 'axios';
 import moment from 'moment';
 import { storeToRefs } from 'pinia';
@@ -11,16 +11,24 @@ const userStore = useUserStore();
 const { email, password } = storeToRefs(userStore);
 
 onMounted(() => {
+  console.log("Tasks mounted.");
+  // load the tasks for the first time
   loadTasks();
-  setInterval(() => {
-    loadTasks()
-  }, 1000);
+  // setup interval to periodically loading the tasks
+  state.interval = setInterval(() => { loadTasks() }, 1000);
 })
+
+onUnmounted(() => {
+  // stop the timer
+  clearInterval(state.interval);
+  console.log("Tasks unmounted.");
+});
 
 defineProps({})
 
 const state = reactive({
   tasks: [],
+  interval: null
 });
 
 function loadTasks() {
