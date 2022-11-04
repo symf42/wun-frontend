@@ -35,7 +35,7 @@ function login() {
 
 <template>
 
-    <div class="dark">
+    <div>
         <div class="flex justify-center h-screen bg-gray-900 overflow-y-scroll">
             <div class="basis-8/12">
 
