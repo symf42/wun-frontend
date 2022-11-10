@@ -36,7 +36,7 @@ function login() {
 <template>
 
     <div>
-        <div class="flex justify-center h-screen bg-gray-900 overflow-y-scroll">
+        <div class="flex justify-center h-screen overflow-y-scroll">
             <div class="basis-8/12">
 
                 <h1 class="my-6 text-2xl font-bold text-slate-200">Login</h1>

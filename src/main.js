@@ -6,7 +6,6 @@ import 'flowbite';
 import App from './App.vue'
 import Login from './components/Login.vue'
 import Tasks from './components/Tasks.vue'
-import CreateTask from './components/CreateTask.vue'
 
 
 
@@ -18,7 +17,6 @@ app.use(pinia)
 const routes = [
     { path: '/', component: Login },
     { path: '/tasks', component: Tasks },
-    { path: '/task/create', component: CreateTask },
 ]
 
 const router = createRouter({
