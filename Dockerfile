@@ -2,7 +2,6 @@ FROM node:19-bullseye AS buildStage
 
 WORKDIR /usr/src
 COPY . .
-RUN rm .env
 ARG VITE_AXIOS_BASE_URL=http://localhost:8080
 RUN echo "VITE_AXIOS_BASE_URL=" + ${VITE_AXIOS_BASE_URL} >> /usr/src/.env
 RUN npm install
